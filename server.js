@@ -26,7 +26,13 @@ app.post('/api', (req, res) => { //from express.js
 // method POST sendiri berarti mengirim data
 
 app.get('/api', (req, res) => {
-  db.find({},(err,data)=> 
-  res.json(data) //.json means to send the data that is in json format
+  db.find({},(err,data)=> {
+    try{
+      res.json(data) //.json means to send the data that is in json format
+    }
+    catch(err){
+      console.log('somekind of error');
+    }
+  }
   );  //change later so that it only gets the username
 })
